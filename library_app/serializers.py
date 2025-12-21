@@ -20,3 +20,5 @@ class BorrowRecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = BorrowRecord
         fields = '__all__'
+
+# next: nested serializers?
