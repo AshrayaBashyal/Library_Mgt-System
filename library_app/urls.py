@@ -6,7 +6,7 @@ urlpatterns = [
     path('books/<int:pk>/', BookRetrieveUpdateDestroyView.as_view()),
 
     path('members/', MemberListCreateView.as_view()),
-    path('members/<int:pk>/', MemberRetrieveUpdateDestroyVIew.as_view()),
+    path('members/<int:pk>/', MemberRetrieveUpdateDestroyView.as_view()),
 
     path('borrows/', BorrowRecordListCreateView.as_view()),
     path('borrows/<int:pk>/', BorrowRecordRetrieveUpdateDestroyView.as_view()),
