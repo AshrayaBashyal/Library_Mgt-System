@@ -5,8 +5,15 @@
 
 from rest_framework import serializers
 from .models import Book, Member, BorrowRecord
+from datetime import date
 
 class BookSerializer(serializers.ModelSerializer):
+    def validate_published_year(self, value):
+        current_year = date.today().year
+        if value > current_year:
+            raise serializers.ValidationError('The published year cannot be in the future!')
+        return value
+
     class Meta:
         model = Book
         fields = '__all__'

@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import UniqueConstraint
+from django.core.exceptions import ValidationError
 
 
 # Create your models here.
@@ -21,6 +22,10 @@ class Member(models.Model):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=10, unique=True)
     address = models.TextField(blank=True, null=True)
+
+    def clean(self):
+        if len(self.name) < 3:
+            raise ValidationError("Name must be at least 3 characters long")
 
     def __str__(self):
         return self.name
